@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dosthing.finance.data.dao.user.CustomerPointlLogDao">
+  <resultMap id="BaseResultMap" type="com.dosthing.finance.data.entity.user.CustomerPointlLog">
+    <id column="point_id" jdbcType="INTEGER" property="pointId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="source" jdbcType="INTEGER" property="source" />
+    <result column="refer_number" jdbcType="VARCHAR" property="referNumber" />
+    <result column="change_point" jdbcType="INTEGER" property="changePoint" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    point_id, customer_id, source, refer_number, change_point, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_point_log
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_point_log
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dosthing.finance.data.entity.user.CustomerPointlLog">
+    insert into customer_point_log (point_id, customer_id, source, 
+      refer_number, change_point, create_time
+      )
+    values (#{pointId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{source,jdbcType=INTEGER},
+      #{referNumber,jdbcType=VARCHAR}, #{changePoint,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dosthing.finance.data.entity.user.CustomerPointlLog">
+    insert into customer_point_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pointId != null">
+        point_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="referNumber != null">
+        refer_number,
+      </if>
+      <if test="changePoint != null">
+        change_point,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pointId != null">
+        #{pointId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="referNumber != null">
+        #{referNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="changePoint != null">
+        #{changePoint,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dosthing.finance.data.entity.user.CustomerPointlLog">
+    update customer_point_log
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="referNumber != null">
+        refer_number = #{referNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="changePoint != null">
+        change_point = #{changePoint,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dosthing.finance.data.entity.user.CustomerPointlLog">
+    update customer_point_log
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      source = #{source,jdbcType=INTEGER},
+      refer_number = #{referNumber,jdbcType=VARCHAR},
+      change_point = #{changePoint,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where point_id = #{pointId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,30 @@
+system:
+  # 后端免认证接口 url
+  anonUrl: /login,/hello
+  # token有效期，单位秒
+  jwtTimeOut: 3600
+
+spring:
+  aop:
+    proxy-target-class: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: li6687846
+    url: jdbc:mysql://localhost:3306/finace_analysis_system?characterEncoding=utf-8&useSLL=false&serverTimezone=UTC
+  jpa:
+    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+  redis:
+    host: 192.168.43.250
+    port: 6379
+    password:
+  mail:
+    host: smtp.163.com
+    username: 18578776389@163.com
+    password: li60207
+    default-encoding: UTF-8
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

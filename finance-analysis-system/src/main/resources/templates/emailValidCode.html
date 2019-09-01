@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>邮件模板</title>
+</head>
+<body>
+你好，感谢您注册，这是一封验证邮件，您的验证码是：<span>${validCode}</span>，请在15分钟内输入完成注册，感谢您的支持。
+<br/>
+<a href="#" th:href="@{https://blog.csdn.net/dosthing/article/list/}">欢迎访问我们的，以获取更多的支持</a>
+</body>
+</html>
